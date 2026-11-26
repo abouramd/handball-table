@@ -3,6 +3,7 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { createMatch, reduce, type MatchAction, type MatchState, type NewMatchParams } from '../logic';
 import { vibrate } from '../services/haptics';
+import { useHistoryStore } from './historyStore';
 
 /** Any match action without `now`: the store stamps it with Date.now(). */
 export type MatchCommand = MatchAction extends infer A ? (A extends MatchAction ? Omit<A, 'now'> : never) : never;
@@ -35,6 +36,8 @@ export const useMatchStore = create<MatchStore>()(
         if (!match) return;
         const { state, alerts } = reduce(match, { ...command, now: Date.now() } as MatchAction);
         if (state !== match) set({ match: state });
+        // A match that just ended (full time or "End match") is saved to the history.
+        if (state.phase === 'ENDED' && match.phase !== 'ENDED') useHistoryStore.getState().add(state);
         // Several alerts at once (e.g. resumed late): the strongest wins.
         if (alerts.length > 0) {
           set({ lastAlertAt: Date.now() });

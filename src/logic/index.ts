@@ -10,3 +10,4 @@ export * from './timeouts';
 export * from './undo';
 export * from './matchReducer';
 export * from './describe';
+export * from './history';

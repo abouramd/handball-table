@@ -9,7 +9,7 @@ import { Stepper } from '../components/ui/Stepper';
 import { ToggleRow } from '../components/ui/ToggleRow';
 import { formatCountdown, HALF_LENGTH_PRESETS_MIN, MINUTE, SECOND, type Settings } from '../logic';
 import { useMatchStore } from '../store/matchStore';
-import { useSettingsStore, type TeamSetup } from '../store/settingsStore';
+import { useSettingsStore, type SetupDefaults, type TeamSetup } from '../store/settingsStore';
 import { caps, font, paint, RADIUS, tabular, textOn, TOUCH } from '../theme';
 
 type HalfChoice = (typeof HALF_LENGTH_PRESETS_MIN)[number] | 'custom';
@@ -17,7 +17,14 @@ type HalfChoice = (typeof HALF_LENGTH_PRESETS_MIN)[number] | 'custom';
 const clampMin = (m: number) => Math.min(60, Math.max(1, Math.round(m) || 1));
 
 export default function Setup() {
+  const hydrated = useSettingsStore((s) => s.hydrated);
   const defaults = useSettingsStore((s) => s.defaults);
+  // The form copies the defaults once, so it must only mount after they've loaded.
+  if (!hydrated) return <View style={styles.root} />;
+  return <SetupForm defaults={defaults} />;
+}
+
+function SetupForm({ defaults }: { defaults: SetupDefaults }) {
   const saveDefaults = useSettingsStore((s) => s.saveDefaults);
   const startNewMatch = useMatchStore((s) => s.startNewMatch);
 

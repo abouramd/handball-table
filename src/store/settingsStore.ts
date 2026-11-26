@@ -22,6 +22,8 @@ export const FACTORY_DEFAULTS: SetupDefaults = {
 
 interface SettingsStore {
   defaults: SetupDefaults;
+  /** True once the saved defaults have been read from storage. */
+  hydrated: boolean;
   saveDefaults: (d: SetupDefaults) => void;
 }
 
@@ -30,12 +32,17 @@ export const useSettingsStore = create<SettingsStore>()(
   persist(
     (set) => ({
       defaults: FACTORY_DEFAULTS,
+      hydrated: false,
       saveDefaults: (defaults) => set({ defaults }),
     }),
     {
       name: 'handball-table/defaults',
       version: 1,
       storage: createJSONStorage(() => AsyncStorage),
+      partialize: (s) => ({ defaults: s.defaults }),
+      // Reading storage is async: screens wait for this flag so they never
+      // start from the factory values while the saved ones are still loading.
+      onRehydrateStorage: () => () => useSettingsStore.setState({ hydrated: true }),
       // Merge so settings added in later versions get their default values.
       merge: (persisted, current) => {
         const p = (persisted as Partial<SettingsStore> | undefined)?.defaults;

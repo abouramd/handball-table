@@ -48,6 +48,8 @@ The landing page lives in `landing/` and deploys to Vercel on every push to
 - **Undo and Redo** (goals, timeouts, suspensions, clock corrections); each button
   names what it will act on. A new action after Undo clears Redo, like in any editor.
 - **Event log** and **match summary**.
+- **Past matches**: every finished match is saved on the phone (up to 100) and
+  listed on the home screen; open any match report, or delete one or all of them.
 - The match is saved after every change: a crash, app kill or phone lock never
   loses it. On launch, the home screen offers "Resume match in progress".
 - The screen stays awake while a match is open. All alerts are vibrations (no sounds).

@@ -1,17 +1,23 @@
 import { Ionicons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { BigButton } from '../components/ui/BigButton';
-import { formatClock, halfTimeScore, suspensionEvents, timeoutEvents, type Half, type MatchState, type TeamId } from '../logic';
+import { formatClock, halfTimeScore, matchDate, suspensionEvents, timeoutEvents, type Half, type MatchState, type TeamId } from '../logic';
+import { useHistoryStore } from '../store/historyStore';
 import { useMatchStore } from '../store/matchStore';
 import { caps, font, paint, tabular, textOn } from '../theme';
 
 const halfName = (h: Half) => (h === 1 ? '1st half' : '2nd half');
 
 export default function Summary() {
-  const match = useMatchStore((s) => s.match);
+  // With ?id= it shows a match from the history; without, the match that just ended.
+  const { id } = useLocalSearchParams<{ id?: string }>();
+  const current = useMatchStore((s) => s.match);
+  const clearMatch = useMatchStore((s) => s.clearMatch);
+  const saved = useHistoryStore((s) => (id ? s.matches.find((m) => m.id === id) : undefined));
+  const removeFromHistory = useHistoryStore((s) => s.remove);
+  const match = id ? saved : current;
 
   useEffect(() => {
     if (!match) router.replace('/');
@@ -19,7 +25,26 @@ export default function Summary() {
   if (!match) return null;
 
   const ht = halfTimeScore(match);
-  const date = new Date(match.createdAt).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+  const date = matchDate(match);
+  const shortDate = new Date(match.createdAt).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
+
+  const deleteMatch = () =>
+    Alert.alert(
+      'Delete this match?',
+      `${match.teams.A.name} ${match.teams.A.score} – ${match.teams.B.score} ${match.teams.B.name}, ${date}. This can't be undone.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: () => {
+            router.dismissTo('/');
+            removeFromHistory(match.id);
+            if (current?.id === match.id) clearMatch();
+          },
+        },
+      ],
+    );
 
   return (
     <View style={styles.root}>
@@ -44,8 +69,8 @@ export default function Summary() {
         </View>
         <View style={styles.metaBand}>
           <Text style={caps(15, paint.bone)}>Full time</Text>
-          <Text style={[caps(15), tabular]}>
-            Half-time {ht.A}–{ht.B} · {date}
+          <Text style={[caps(15), tabular, styles.meta]} numberOfLines={1} adjustsFontSizeToFit>
+            Half-time {ht.A}–{ht.B} · {shortDate}
           </Text>
         </View>
 
@@ -55,7 +80,8 @@ export default function Summary() {
       </ScrollView>
 
       <SafeAreaView edges={['bottom']} style={styles.footer}>
-        <BigButton label="Home" icon="home-outline" onPress={() => router.dismissTo('/')} style={styles.home} />
+        <IconKey icon="home-outline" label="Home" onPress={() => router.dismissTo('/')} />
+        <IconKey icon="trash-outline" label="Delete this match" color={paint.alert} onPress={deleteMatch} />
         <Pressable
           onPress={() => router.replace('/setup')}
           accessibilityRole="button"
@@ -67,6 +93,20 @@ export default function Summary() {
         </Pressable>
       </SafeAreaView>
     </View>
+  );
+}
+
+/** Compact icon key for the footer's secondary actions. */
+function IconKey({ icon, label, color = paint.bone, onPress }: { icon: 'home-outline' | 'trash-outline'; label: string; color?: string; onPress: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={label}
+      style={({ pressed }) => [styles.iconKey, pressed && { backgroundColor: paint.bandHigh }]}
+    >
+      <Ionicons name={icon} size={26} color={color} />
+    </Pressable>
   );
 }
 
@@ -141,7 +181,8 @@ const styles = StyleSheet.create({
   rowValue: { color: paint.bone, fontFamily: font.numeral, fontSize: 22, ...tabular },
   rowValueStrong: { color: paint.bone, fontFamily: font.numeral, fontSize: 22, ...tabular },
   footer: { flexDirection: 'row', gap: 8, paddingHorizontal: 12, paddingTop: 8, backgroundColor: paint.wall },
-  home: { width: 120 },
+  meta: { flexShrink: 1, marginLeft: 12, textAlign: 'right' },
+  iconKey: { width: 64, minHeight: 76, borderRadius: 12, backgroundColor: paint.band, alignItems: 'center', justifyContent: 'center' },
   newStripe: {
     flex: 1,
     minHeight: 76,

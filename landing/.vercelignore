@@ -2,3 +2,4 @@ _preview.html
 *.md
 .env*
 .vercel
+*.apk

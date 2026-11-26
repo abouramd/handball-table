@@ -5,6 +5,25 @@ handball matches. One phone, portrait, dark theme, large touch targets.
 
 Built with Expo (SDK 58), React Native, TypeScript, expo-router and Zustand.
 
+## Links
+
+- Landing page (Android download): https://handball-table.vercel.app
+- Releases (APK files): https://github.com/abouramd/handball-table/releases
+- Expo project and builds: https://expo.dev/accounts/abouramd/projects/handball-table
+
+The landing page lives in `landing/` and deploys to Vercel on every push to
+`master` that changes `landing/` (other commits are skipped).
+
+## Releasing a new Android version
+
+1. Bump `version` and `android.versionCode` in `app.json`.
+2. Build the APK: `npx eas-cli@latest build -p android --profile preview`.
+3. Download the APK from the build page and attach it to a new GitHub release:
+   `gh release create v1.1.0 handball-table.apk --title "Handball Table 1.1.0"`.
+4. In `landing/vercel.json`, point the `/handball-table.apk` redirect at the new
+   release, and update the version and size in `landing/index.html`. Push, and
+   Vercel redeploys the landing page.
+
 ## Features
 
 - **Match setup**: team names and colors, half length (20 / 25 / 30 / custom),

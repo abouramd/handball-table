@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-26T18:18:10+00:00",
+  "title": "Design System: Handball Table",
+  "extensions": {
+    "colorMeta": {
+      "wall": {
+        "role": "neutral",
+        "displayName": "Hall Wall",
+        "canonical": "oklch(18.8% 0.009 240.4)",
+        "tonalRamp": [
+          "#0A0B0D",
+          "#232528",
+          "#3F4345",
+          "#5D6265",
+          "#7E8387",
+          "#A1A6A9",
+          "#C6CACC",
+          "#ECEFF1"
+        ]
+      },
+      "band": {
+        "role": "neutral",
+        "displayName": "Painted Band",
+        "canonical": "oklch(25.4% 0.016 232.5)",
+        "tonalRamp": [
+          "#080C0E",
+          "#202629",
+          "#3C4348",
+          "#596368",
+          "#7A848A",
+          "#9EA7AC",
+          "#C3CACF",
+          "#EAEFF3"
+        ]
+      },
+      "band-high": {
+        "role": "neutral",
+        "displayName": "Pressed Band",
+        "canonical": "oklch(31.0% 0.022 237.6)",
+        "tonalRamp": [
+          "#070C0F",
+          "#1F262B",
+          "#3A444A",
+          "#57636B",
+          "#78848D",
+          "#9CA7AF",
+          "#C1CBD1",
+          "#E8F0F5"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Band Seam",
+        "canonical": "oklch(33.9% 0.023 233.4)",
+        "tonalRamp": [
+          "#070C0F",
+          "#1E262B",
+          "#39444A",
+          "#56646C",
+          "#76858D",
+          "#9AA7AF",
+          "#C0CBD1",
+          "#E7F0F5"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Stencil Bone",
+        "canonical": "oklch(91.9% 0.014 88.7)",
+        "tonalRamp": [
+          "#0C0B08",
+          "#272520",
+          "#44423B",
+          "#646159",
+          "#85827A",
+          "#A8A59D",
+          "#CBC9C3",
+          "#F0EEE9"
+        ]
+      },
+      "bone-muted": {
+        "role": "neutral",
+        "displayName": "Faded Stencil",
+        "canonical": "oklch(71.2% 0.013 223.6)",
+        "tonalRamp": [
+          "#080C0D",
+          "#212628",
+          "#3D4346",
+          "#5A6366",
+          "#7B8488",
+          "#9FA6AA",
+          "#C4CACD",
+          "#EAEFF2"
+        ]
+      },
+      "run": {
+        "role": "primary",
+        "displayName": "Running Green",
+        "canonical": "oklch(71.2% 0.164 154.1)",
+        "tonalRamp": [
+          "#001300",
+          "#003208",
+          "#00541E",
+          "#007835",
+          "#029C56",
+          "#5BBC80",
+          "#91DEAA",
+          "#C5FFD6"
+        ]
+      },
+      "on-run": {
+        "role": "primary",
+        "displayName": "Pitch Dark Green",
+        "canonical": "oklch(17.5% 0.026 158.1)",
+        "tonalRamp": [
+          "#070D09",
+          "#1E2822",
+          "#39453E",
+          "#56665C",
+          "#77877D",
+          "#9BA9A0",
+          "#C1CDC5",
+          "#E8F1EB"
+        ]
+      },
+      "stop": {
+        "role": "primary",
+        "displayName": "Stopped Amber",
+        "canonical": "oklch(80.3% 0.152 79.6)",
+        "tonalRamp": [
+          "#1A0400",
+          "#3D1C00",
+          "#623700",
+          "#8A5400",
+          "#AE7600",
+          "#CC9C44",
+          "#EBC27F",
+          "#FFEAB6"
+        ]
+      },
+      "on-stop": {
+        "role": "primary",
+        "displayName": "Burnt Umber Ink",
+        "canonical": "oklch(18.8% 0.032 83.9)",
+        "tonalRamp": [
+          "#0E0B05",
+          "#2A241A",
+          "#484133",
+          "#69604F",
+          "#8B816F",
+          "#ACA494",
+          "#CFC8BB",
+          "#F3EEE3"
+        ]
+      },
+      "alert": {
+        "role": "secondary",
+        "displayName": "Warning Red",
+        "canonical": "oklch(62.6% 0.193 23.0)",
+        "tonalRamp": [
+          "#270000",
+          "#520003",
+          "#7F0217",
+          "#B01F2C",
+          "#D9494D",
+          "#F57B77",
+          "#FFA8A3",
+          "#FFD6D1"
+        ]
+      },
+      "on-alert": {
+        "role": "secondary",
+        "displayName": "White Ink",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#A5A5A5",
+          "#C9C9C9",
+          "#EEEEEE"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Band Scrim",
+        "canonical": "rgba(0,0,0,0.28)"
+      },
+      "ink-dark": {
+        "role": "neutral",
+        "displayName": "Dark Ink",
+        "canonical": "#0B0D0F"
+      },
+      "team-red": {
+        "role": "tertiary",
+        "displayName": "Team Red"
+      },
+      "team-blue": {
+        "role": "tertiary",
+        "displayName": "Team Blue"
+      },
+      "team-green": {
+        "role": "tertiary",
+        "displayName": "Team Green"
+      },
+      "team-yellow": {
+        "role": "tertiary",
+        "displayName": "Team Yellow"
+      },
+      "team-purple": {
+        "role": "tertiary",
+        "displayName": "Team Purple"
+      },
+      "team-orange": {
+        "role": "tertiary",
+        "displayName": "Team Orange"
+      },
+      "team-teal": {
+        "role": "tertiary",
+        "displayName": "Team Teal"
+      },
+      "team-grey": {
+        "role": "tertiary",
+        "displayName": "Team Grey"
+      }
+    },
+    "typographyMeta": {
+      "clock": {
+        "displayName": "Clock",
+        "purpose": "Game clock in the clock band; fitted to '00:00' so it never jumps size."
+      },
+      "timeout-clock": {
+        "displayName": "Timeout Clock",
+        "purpose": "Time left on the full-screen timeout, counting down."
+      },
+      "score": {
+        "displayName": "Score",
+        "purpose": "Score in each team band."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Stripe action words and overlay headings."
+      },
+      "numeral-key": {
+        "displayName": "Numeral Key",
+        "purpose": "Number-pad keys and the break timer."
+      },
+      "numeral-value": {
+        "displayName": "Numeral Value",
+        "purpose": "Values in split buttons, segments, steppers."
+      },
+      "chip": {
+        "displayName": "Chip",
+        "purpose": "Suspension chip time."
+      },
+      "button-label": {
+        "displayName": "Button Label",
+        "purpose": "Centred labels on painted buttons."
+      },
+      "label-caps": {
+        "displayName": "Label Caps",
+        "purpose": "Tracked uppercase labels via caps()."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Setting labels and read-not-glanced text."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Undo target line and disabled reasons."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "alert-beat",
+        "value": "650ms",
+        "purpose": "One-beat ground/ink inversion after every vibration (useAlertFlash)."
+      },
+      {
+        "name": "chip-flash",
+        "value": "300ms",
+        "purpose": "On/off cycle of an expired suspension chip, until the official taps it to acknowledge."
+      },
+      {
+        "name": "break-over-flash",
+        "value": "450ms",
+        "purpose": "On/off cycle of the half-time band at 0:00."
+      },
+      {
+        "name": "press-scale",
+        "value": "scale(0.97)",
+        "purpose": "Painted button press, with an 18% black shade."
+      },
+      {
+        "name": "modal-fade",
+        "value": "fade",
+        "purpose": "Timeout overlay entry."
+      },
+      {
+        "name": "modal-slide",
+        "value": "slide",
+        "purpose": "Shirt number pad and clock correction sheet entry."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "scale-min",
+        "value": "667pt height (scale 0.76)"
+      },
+      {
+        "name": "scale-ref",
+        "value": "844pt height (scale 1.0)"
+      },
+      {
+        "name": "goal-key-shrink",
+        "value": "scale < 0.9: +1 key 76px to 64px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "State Stripe",
+      "kind": "custom",
+      "refersTo": "state-stripe-running",
+      "description": "Full-width dado stripe that wears the clock state and is the start/stop control; inverts for one beat on each vibration.",
+      "html": "<button class=\"ds-stripe ds-stripe-run\"><span class=\"ds-stripe-act\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\"><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" fill=\"currentColor\"/></svg>STOP</span><span class=\"ds-stripe-cap\"><i></i>CLOCK RUNNING</span></button><button class=\"ds-stripe ds-stripe-stop\"><span class=\"ds-stripe-act\"><svg width=\"30\" height=\"30\" viewBox=\"0 0 24 24\"><path d=\"M7 5l12 7-12 7z\" fill=\"currentColor\"/></svg>START</span><span class=\"ds-stripe-cap\"><i></i>CLOCK STOPPED</span></button>",
+      "css": ".ds-stripe{display:flex;width:100%;height:92px;align-items:center;justify-content:space-between;padding:0 20px;border:0;border-radius:0;cursor:pointer;transition:opacity .1s}.ds-stripe-run{background:#2FBF71;color:#06140C}.ds-stripe-stop{background:#F2B233;color:#1A1203}.ds-stripe:hover{opacity:.92}.ds-stripe:active{opacity:.82}.ds-stripe:focus-visible{outline:3px solid #E8E4DA;outline-offset:-6px}.ds-stripe-run:active{background:#06140C;color:#2FBF71}.ds-stripe-act{display:flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:46px;letter-spacing:2px}.ds-stripe-cap{display:flex;align-items:center;gap:7px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1.6px}.ds-stripe-cap i{width:8px;height:8px;border-radius:4px;background:currentColor}"
+    },
+    {
+      "name": "Goal Button (+1)",
+      "kind": "button",
+      "refersTo": "button-goal",
+      "description": "The biggest target in a team band: bone ground, wall ink.",
+      "html": "<button class=\"ds-btn-goal\">+1</button>",
+      "css": ".ds-btn-goal{min-width:180px;height:76px;background:#E8E4DA;color:#101417;border:0;border-radius:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;letter-spacing:1.2px;transition:transform .08s,filter .08s}.ds-btn-goal:hover{filter:brightness(.96)}.ds-btn-goal:active{transform:scale(.97);filter:brightness(.82)}.ds-btn-goal:focus-visible{outline:3px solid #F2B233;outline-offset:2px}"
+    },
+    {
+      "name": "Band Button",
+      "kind": "button",
+      "refersTo": "button-band",
+      "description": "Default painted press target on the wall.",
+      "html": "<button class=\"ds-btn-band\">LAST MATCH REPORT</button>",
+      "css": ".ds-btn-band{min-height:64px;padding:0 14px;background:#1B2429;color:#E8E4DA;border:0;border-radius:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:1.2px;text-transform:uppercase}.ds-btn-band:hover,.ds-btn-band:active{background:#26323A}.ds-btn-band:active{transform:scale(.97)}.ds-btn-band:focus-visible{outline:3px solid #E8E4DA;outline-offset:2px}"
+    },
+    {
+      "name": "Team Band",
+      "kind": "card",
+      "refersTo": "button-in-band",
+      "description": "Full-bleed team paint with name, score, -1/+1 and split buttons on scrim; timeout value counts taken up.",
+      "html": "<div class=\"ds-team\"><div class=\"ds-team-name\">LIONS</div><div class=\"ds-team-score\">14</div><div class=\"ds-team-row\"><button class=\"ds-scrim ds-minus\">−1</button><button class=\"ds-plus\">+1</button></div><button class=\"ds-scrim ds-split\"><span>Timeout</span><b>1 / 3</b></button><button class=\"ds-scrim ds-split\"><span>+ Suspension</span><b>2</b></button></div>",
+      "css": ".ds-team{background:#1565C0;color:#fff;padding:10px 12px 12px;display:flex;flex-direction:column;gap:8px;width:200px}.ds-team-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:19px;letter-spacing:2.4px}.ds-team-score{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:108px;line-height:.92;font-variant-numeric:tabular-nums}.ds-team-row{display:flex;gap:8px}.ds-scrim{min-height:64px;background:rgba(0,0,0,.28);color:inherit;border:0;border-radius:12px;padding:0 14px}.ds-scrim:active{transform:scale(.97);background:rgba(0,0,0,.42)}.ds-scrim:focus-visible,.ds-plus:focus-visible{outline:3px solid #E8E4DA;outline-offset:2px}.ds-minus{min-width:64px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px}.ds-plus{flex:1;height:76px;background:#E8E4DA;color:#101417;border:0;border-radius:12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px}.ds-split{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:600}.ds-split b{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px}"
+    },
+    {
+      "name": "Suspension Chip",
+      "kind": "chip",
+      "refersTo": "suspension-chip",
+      "description": "Shirt number and time left painted in wall colour on a team band; flashes amber with 'IN' at expiry.",
+      "html": "<button class=\"ds-chip\"><span class=\"ds-chip-who\">#7</span><span class=\"ds-chip-t\">1:34</span></button><button class=\"ds-chip ds-chip-flash\"><span class=\"ds-chip-who\">#11</span><span class=\"ds-chip-t\">IN</span></button>",
+      "css": ".ds-chip{min-height:44px;min-width:86px;display:inline-flex;align-items:center;justify-content:space-between;gap:8px;padding:0 10px;background:#101417;border:2px solid transparent;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-weight:800;}.ds-chip:active{opacity:.75}.ds-chip:focus-visible{outline:3px solid #E8E4DA}.ds-chip-who{color:#F2B233;font-size:22px}.ds-chip-t{color:#E8E4DA;font-size:24px;font-variant-numeric:tabular-nums}.ds-chip-flash{background:#F2B233;border-color:#F2B233}.ds-chip-flash span{color:#1A1203}"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "top-bar-undo",
+      "description": "Bare Home and End targets on the wall; the Undo band names what it reverts.",
+      "html": "<nav class=\"ds-top\"><button class=\"ds-top-side\" aria-label=\"Home\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\"><path d=\"M15 5l-7 7 7 7\" stroke=\"currentColor\" stroke-width=\"2.5\" fill=\"none\"/></svg></button><button class=\"ds-top-undo\"><b>UNDO</b><small>Goal Lions</small></button><button class=\"ds-top-side\" aria-label=\"End match\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\"><path d=\"M5 3v18M5 4h12l-3 4 3 4H5\" stroke=\"currentColor\" stroke-width=\"2\" fill=\"none\"/></svg></button></nav>",
+      "css": ".ds-top{display:flex;height:56px;background:#101417;width:360px}.ds-top-side{width:64px;background:transparent;border:0;color:#E8E4DA}.ds-top-side:hover,.ds-top-side:active{background:#26323A}.ds-top-undo{flex:1;background:#1B2429;border:0;border-radius:0;color:#E8E4DA;display:flex;flex-direction:column;align-items:center;justify-content:center}.ds-top-undo:hover,.ds-top-undo:active{background:#26323A}.ds-top button:focus-visible{outline:3px solid #E8E4DA;outline-offset:-3px}.ds-top-undo b{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:1.5px}.ds-top-undo small{color:#9AA4A8;font-size:12px;font-weight:600}"
+    },
+    {
+      "name": "Segmented",
+      "kind": "input",
+      "refersTo": "segmented-selected",
+      "description": "One band strip; the selected segment in stencil bone.",
+      "html": "<div class=\"ds-seg\" role=\"radiogroup\"><button>20<small>MIN</small></button><button class=\"on\">25<small>MIN</small></button><button>30<small>MIN</small></button></div>",
+      "css": ".ds-seg{display:flex;gap:4px;padding:4px;background:#1B2429;border-radius:12px;width:320px}.ds-seg button{flex:1;min-height:64px;border:0;border-radius:9px;background:transparent;color:#E8E4DA;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:26px;display:flex;flex-direction:column;align-items:center;justify-content:center}.ds-seg small{font-family:system-ui;font-size:11px;font-weight:700;color:#9AA4A8;letter-spacing:.8px}.ds-seg button:hover{background:#26323A}.ds-seg button:focus-visible{outline:3px solid #F2B233}.ds-seg .on,.ds-seg .on:hover{background:#E8E4DA;color:#101417}.ds-seg .on small{color:#101417}"
+    },
+    {
+      "name": "Numeral Input",
+      "kind": "input",
+      "refersTo": "input-numeral",
+      "description": "Custom minutes and clock correction entry.",
+      "html": "<input class=\"ds-num\" value=\"12\" inputmode=\"numeric\">",
+      "css": ".ds-num{width:96px;height:64px;border:0;border-radius:12px;background:#1B2429;color:#E8E4DA;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:32px;text-align:center}.ds-num:hover{background:#26323A}.ds-num:focus-visible{outline:3px solid #E8E4DA;outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Hall Wall",
+    "overview": "The screen is the wall of a club sports hall: horizontal painted bands stacked edge to edge, numerals stencilled in bone-white paint, and one full-width dado stripe that wears the game's state and is itself the start/stop control. Every screen (home, setup, match, summary) and every overlay (timeout, shirt number, clock correction, half-time) is built as a stack of square-cut bands that run to both screen edges. Nothing floats. There are no cards, no tiles with gaps around them, no shadows; a surface is either wall or a band painted onto the wall.\n\nDensity is \"read from arm's length in a bright, noisy hall\". One focal number per state: the clock in the clock band, the score in each team band, the time left in a timeout. Numerals are huge and tabular, labels are small tracked capitals, and the frequent whistle actions (the stripe, +1) are the biggest and closest targets. Team colours are painted as full-bleed bands, always with the team name on them, never as pills or dots alone.\n\nEvery vibration has a visual twin: for one beat (650 ms) the stripe, the half-time band or the timeout screen swaps its ground and ink. The paint inverts; nothing slides, scales or glows.\n\nThe confirmed rejection is the category default: grey rounded cards floating on black.",
+    "keyCharacteristics": [
+      "Full-bleed, square-cut horizontal bands stacked edge to edge on a near-black blue-grey wall.",
+      "One condensed numeral face (Barlow Condensed) for every number and every heading; the system face only for small UI text.",
+      "State is paint: green running, amber stopped, red warning; the stripe carries it full width.",
+      "12 px radius only on press targets that sit inside a band; the bands themselves are square.",
+      "One-beat inversion as the visual twin of each vibration.",
+      "Every touch target at least 64 px."
+    ],
+    "rules": [
+      {
+        "name": "The Paint Means State Rule",
+        "body": "Green, amber and red are reserved for clock state and warnings. They are never decoration, never a brand accent, never a category colour. The one exception the build makes is the amber second word of the home wordmark.",
+        "section": "colors"
+      },
+      {
+        "name": "The Name Beside Paint Rule",
+        "body": "A team colour never appears without the team name painted on it (or, in the summary report, next to it). Colour alone never identifies a team.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink By Luminance Rule",
+        "body": "Text on a team paint or on any user-chosen colour is always picked by `textOn()`, never hard-coded.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Numeral Face Rule",
+        "body": "Every number on screen, and every display word, is Barlow Condensed ExtraBold. No second display face, no system digits for anything the official glances at.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Count Rule",
+        "body": "Any number that changes while the official watches (clock, score, countdowns, chip times, steppers) sets `tabular-nums`, so digits never shift.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fit, Don't Wrap Rule",
+        "body": "Big numerals are sized up front with `fitNumeral()` or `adjustsFontSizeToFit`; they never truncate, wrap or jump size during play.",
+        "section": "typography"
+      },
+      {
+        "name": "The Painted, Not Lifted Rule",
+        "body": "A surface is painted on the wall, never raised off it. Pressed states darken or lighten the paint (band to band-high, a 0.18 black press shade on buttons, a slight 0.97 scale on painted buttons, opacity 0.82 on stripes); nothing gains a shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Band Rule",
+        "body": "If it runs edge to edge, it is square. If it sits inside a band and you press it, it gets 12 px. Nothing else is rounded.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do run every band and stripe to both screen edges with 0 radius; stack bands edge to edge.",
+      "Do reserve 12 px radius for press targets that sit inside a band.",
+      "Do set every number in Barlow Condensed ExtraBold with tabular figures, sized with `fitNumeral()` or `useScale()` so it never wraps or jumps.",
+      "Do make the stripe and +1 the largest, closest targets; keep rare and destructive actions (End, −1, delete chip) smaller and behind a confirm.",
+      "Do keep every touch target at least 64 px.",
+      "Do pair every vibration with a one-beat (650 ms) inversion of the stripe, break band or timeout screen.",
+      "Do pick ink on team paint with `textOn()` and always show the team name on its paint.",
+      "Do use band, band-high and scrim for depth and pressed states."
+    ],
+    "donts": [
+      "Don't use grey rounded cards floating on black, or any tile with a gap around it on the wall.",
+      "Don't add shadows, glows, blur or gradients.",
+      "Don't paint team colours as pills, dots or chips standing alone; they are full-bleed bands with the name on them.",
+      "Don't use green, amber or red for anything other than clock state, attention and warning.",
+      "Don't introduce a second display face or set glanceable numbers in the system face.",
+      "Don't signal with motion alone; the twin of a vibration is a paint inversion, not an animation."
+    ]
+  }
+}

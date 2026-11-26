@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Handball Table · One phone runs the officials' table</title>
+  <meta name="description" content="Game clock, score, team timeouts and 2-minute suspensions for youth and friendly handball, on one phone. Download for Android.">
+  <meta name="theme-color" content="#101417">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Handball Table">
+  <meta property="og:description" content="One phone runs the officials' table: clock, score, timeouts and suspensions. Download for Android.">
+  <meta property="og:url" content="https://handball-table.vercel.app/">
+  <meta property="og:image" content="https://handball-table.vercel.app/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Handball Table: a 47:31 game clock, score 18 to 16, and a green Android download stripe.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="/assets/BarlowCondensed_800ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/scrub.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#download">Skip to download</a>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Handball Table, home">
+      <img src="/assets/favicon.png" width="30" height="30" alt="">
+      <span>Handball Table</span>
+    </a>
+    <a class="topbar-link" href="#install">Install</a>
+  </header>
+
+  <main class="layout">
+    <!-- The sticky column: clock band, promise, the one action. -->
+    <section class="intro" aria-labelledby="headline">
+      <div class="clock" aria-hidden="true">
+        <span class="clock-period" data-period>1st half</span>
+        <span class="clock-time" data-clock>0:00</span>
+        <span class="clock-track"><span class="clock-fill" data-fill></span><span class="clock-half"></span></span>
+      </div>
+      <h1 id="headline" class="headline">One phone runs the officials' table</h1>
+      <p class="lede">Game clock, score, team timeouts and 2-minute suspensions for youth and friendly handball. One person, one thumb, no paper sheet.</p>
+      <a class="stripe" id="download" href="/handball-table.apk" download="handball-table.apk">
+        <svg class="stripe-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg>
+        <span class="stripe-text">
+          <span class="stripe-word">Download for Android</span>
+          <span class="stripe-meta">APK · version 1.0.0 · 92 MB</span>
+        </span>
+      </a>
+      <p class="ios-note">iPhone: not available yet. An iOS version needs TestFlight or the App Store.</p>
+    </section>
+
+    <!-- The spine: one match, each feature at the minute it happens. -->
+    <section class="match" aria-label="One match with Handball Table">
+      <div class="scrubber" aria-hidden="true">
+        <span class="scrubber-period" data-period>1st half</span>
+        <span class="scrubber-time" data-clock>0:00</span>
+        <span class="clock-track"><span class="clock-fill" data-fill></span><span class="clock-half"></span></span>
+      </div>
+
+      <ol class="spine">
+        <li class="moment" data-at="0:00" data-period="1st half">
+          <p class="moment-time">0:00</p>
+          <div class="moment-body">
+            <h2>Kickoff on the whistle</h2>
+            <p>The whole stripe under the clock is the start/stop button. Green means running, amber means stopped, so you know the state at a glance from arm's length.</p>
+            <div class="demo demo-stripe" aria-hidden="true">
+              <span class="demo-stop"><i class="sq"></i>Stop</span><span class="demo-cap"><i class="dot"></i>Clock running</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="moment" data-at="12:40" data-period="1st half">
+          <p class="moment-time">12:40</p>
+          <div class="moment-body">
+            <h2>+1 is the biggest key</h2>
+            <p>Each team gets its own band in its own colour, with its name always beside the colour. −1 is small and set apart, and the score never drops below zero.</p>
+            <div class="demo demo-teams" aria-hidden="true">
+              <span class="t t-a"><em>Lions U16</em><b>7</b></span><span class="t t-b"><em>Rovers U16</em><b>5</b></span>
+            </div>
+          </div>
+        </li>
+
+        <li class="moment" data-at="21:15" data-period="1st half">
+          <p class="moment-time">21:15</p>
+          <div class="moment-body">
+            <h2>A timeout in the team's colour</h2>
+            <p>The game clock stops at once and a full-screen 1:00 countdown opens. The phone vibrates at 0:10 left and at 0:00. There's no limit by default: each team's button counts the timeouts taken, and you can set a limit for your competition.</p>
+            <div class="demo demo-timeout" aria-hidden="true"><span>Rovers U16 · Timeout</span><b>0:47</b></div>
+          </div>
+        </li>
+
+        <li class="moment" data-at="28:00" data-period="1st half">
+          <p class="moment-time">28:00</p>
+          <div class="moment-body">
+            <h2>#7, two minutes</h2>
+            <p>Suspensions run on the game clock, not the wall clock. They pause on every stop, including timeouts, and any number can run at once.</p>
+            <div class="demo demo-chips" aria-hidden="true">
+              <span class="chip"><b>#7</b>2:00</span><span class="chip"><b>#12</b>0:41</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="halftime" data-at="30:00" data-period="Half-time">
+          <p class="halftime-time">30:00</p>
+          <p class="halftime-text">Half-time. The clock stopped at exactly 30:00. #7 still has <strong>0:58</strong> to serve, carried into the 2nd half.</p>
+        </li>
+
+        <li class="moment" data-at="30:58" data-period="2nd half">
+          <p class="moment-time">30:58</p>
+          <div class="moment-body">
+            <h2>#7 can come back in</h2>
+            <p>The suspension ran out 58 seconds into the 2nd half. The phone vibrates and the chip blinks "IN" until you tap it, so you can't miss it even if you looked away.</p>
+            <div class="demo demo-chips" aria-hidden="true">
+              <span class="chip chip-in"><b>#7</b>IN</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="moment" data-at="44:10" data-period="2nd half">
+          <p class="moment-time">44:10</p>
+          <div class="moment-body">
+            <h2>Undo, then redo</h2>
+            <p>Each button names what it will change, such as "Undo · Goal Lions U16". Clock wrong after a missed whistle? Hold the clock and correct it to the second.</p>
+            <div class="demo demo-history" aria-hidden="true">
+              <span><b>Undo</b>Goal Lions U16</span><span><b>Redo</b>Timeout Rovers</span>
+            </div>
+          </div>
+        </li>
+
+        <li class="moment moment-screen" data-at="47:31" data-period="2nd half">
+          <p class="moment-time">47:31</p>
+          <div class="moment-body">
+            <h2>The whole match on one screen</h2>
+            <p>Every tap is saved, so a crash or a locked phone loses nothing, and the screen stays awake for the whole match.</p>
+            <figure class="phone">
+              <img src="/assets/match-screen.webp" width="743" height="1568" loading="lazy" decoding="async"
+                   alt="The Handball Table match screen at 47:31 in the 2nd half: green STOP stripe, Lions U16 18, Rovers U16 16, suspensions #7 1:15, #12 0:03 and #4 0:39.">
+            </figure>
+          </div>
+        </li>
+
+        <li class="fulltime" data-at="60:00" data-period="Full time">
+          <p class="fulltime-time">60:00</p>
+          <h2>Full time. The report is ready.</h2>
+          <p>Final score, half-time score, and every timeout and suspension with its game time and shirt number.</p>
+          <div class="fulltime-score" aria-hidden="true"><span class="t t-a"><em>Lions U16</em><b>24</b></span><span class="t t-b"><em>Rovers U16</em><b>21</b></span></div>
+          <a class="stripe stripe-end" href="/handball-table.apk" download="handball-table.apk">
+            <svg class="stripe-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></svg>
+            <span class="stripe-text"><span class="stripe-word">Download for Android</span><span class="stripe-meta">APK · version 1.0.0 · 92 MB</span></span>
+          </a>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <section class="install" id="install" aria-labelledby="install-title">
+    <h2 id="install-title">Install on Android</h2>
+    <ol class="steps">
+      <li><span class="step-n">1</span><p>Open this page <strong>on the Android phone</strong> and tap <strong>Download for Android</strong>.</p></li>
+      <li><span class="step-n">2</span><p>Open the downloaded file. If Android asks, allow your browser to <strong>install unknown apps</strong>, then tap <strong>Install</strong>.</p></li>
+      <li><span class="step-n">3</span><p>Open <strong>Handball Table</strong>, name the two teams and tap <strong>Go to match</strong>.</p></li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <span>Handball Table 1.0.0</span>
+    <span>Vibration alerts only, no sounds. Portrait phones.</span>
+  </footer>
+</body>
+</html>

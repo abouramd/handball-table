@@ -1,0 +1,275 @@
+/* Handball Table landing: "Sixty Minutes" in the app's Hall Wall world (see DESIGN.md).
+   The page is one match: a 0:00 → 60:00 spine, painted bands, one green stripe for the action. */
+
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/assets/BarlowCondensed_800ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/assets/BarlowCondensed_700Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --wall: #101417;
+  --band: #1b2429;
+  --band-high: #26323a;
+  --line: #2c3a42;
+  --bone: #e8e4da;
+  --bone-muted: #9aa4a8;
+  --run: #2fbf71;
+  --on-run: #06140c;
+  --stop: #f2b233;
+  --on-stop: #1a1203;
+  --team-a: #d32f2f;
+  --team-b: #1565c0;
+  --numeral: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --gutter: clamp(20px, 4.5vw, 56px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--wall); color: var(--bone); font: 500 17px/1.55 var(--ui); }
+::selection { background: var(--stop); color: var(--on-stop); }
+:focus-visible { outline: 3px solid var(--stop); outline-offset: 3px; }
+a { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, p, ol, figure { margin: 0; }
+
+.skip { position: absolute; left: 12px; top: -60px; z-index: 10; background: var(--stop); color: var(--on-stop); padding: 10px 14px; font-weight: 700; }
+.skip:focus { top: 12px; }
+
+/* Top bar: bare on the wall */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: max(14px, env(safe-area-inset-top)) var(--gutter) 14px;
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { border-radius: 7px; }
+.brand span, .topbar-link {
+  font: 700 17px/1 var(--numeral); letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;
+}
+.topbar-link { color: var(--bone-muted); text-decoration: none; padding: 14px 0 14px 14px; }
+.topbar-link:hover { color: var(--bone); }
+
+/* Layout: phone = one column; desktop = sticky intro left, the match spine right. */
+.layout { display: block; }
+
+.intro { padding: 0 var(--gutter) 8px; }
+
+.clock { display: grid; gap: 2px; margin: 8px 0 20px; }
+.clock-period, .scrubber-period {
+  font: 700 15px/1 var(--numeral); letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-muted);
+}
+.clock-time {
+  font: 800 clamp(112px, 34vw, 168px)/0.86 var(--numeral);
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em;
+}
+.clock-track { position: relative; display: block; height: 4px; background: var(--band-high); margin-top: 14px; }
+.clock-fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--bone); transition: width 420ms var(--ease-out); }
+.clock-half { position: absolute; left: 50%; top: -5px; width: 3px; height: 14px; background: var(--stop); transform: translateX(-1px); }
+
+.headline {
+  font: 800 clamp(40px, 9vw, 64px)/0.95 var(--numeral);
+  text-transform: uppercase; letter-spacing: 0.005em; max-width: 15ch; text-wrap: balance;
+}
+.lede { margin: 16px 0 24px; max-width: 38ch; color: var(--bone-muted); font-size: clamp(17px, 1.5vw, 19px); }
+
+/* The one action: painted like the app's start stripe. */
+.stripe {
+  display: flex; align-items: center; gap: 16px;
+  margin: 0 calc(var(--gutter) * -1);
+  min-height: 96px; padding: 18px var(--gutter);
+  background: var(--run); color: var(--on-run); text-decoration: none;
+  transition: background-color 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+.stripe:hover { filter: brightness(1.08); }
+.stripe:active { transform: scale(0.985); }
+.stripe-icon { width: 34px; height: 34px; flex: none; }
+.stripe-text { display: flex; flex-direction: column; }
+.stripe-word { font: 800 clamp(22px, 7vw, 40px)/1 var(--numeral); letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+.stripe-meta { margin-top: 6px; font: 600 14px/1.2 var(--ui); font-variant-numeric: tabular-nums; }
+.ios-note { margin-top: 14px; font-size: 15px; color: var(--bone-muted); }
+
+/* The match spine */
+.match { position: relative; margin-top: 8px; }
+.scrubber {
+  position: sticky; top: 0; z-index: 5;
+  display: grid; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 14px;
+  padding: 12px var(--gutter) 10px;
+  background: rgba(16, 20, 23, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: -63px; /* overlays the spine instead of pushing it down */
+  opacity: 0; transform: translateY(-8px); pointer-events: none;
+  transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+}
+.scrubber.is-on { opacity: 1; transform: none; }
+.scrubber-time { grid-row: 1; grid-column: 1; font: 800 34px/1 var(--numeral); font-variant-numeric: tabular-nums; min-width: 3.1ch; }
+.scrubber-period { grid-row: 1; grid-column: 2; justify-self: end; }
+.scrubber .clock-track { grid-column: 1 / -1; margin-top: 8px; }
+
+.spine { list-style: none; padding: 0; position: relative; }
+.spine::before {
+  content: ""; position: absolute; top: 0; bottom: 0; left: calc(var(--gutter) + 74px + 13px); width: 3px; background: var(--line);
+}
+
+.moment {
+  position: relative; display: grid; grid-template-columns: 74px 1fr; column-gap: 28px;
+  padding: 40px var(--gutter) 40px var(--gutter);
+}
+.moment::before {
+  content: ""; position: absolute; top: 49px; left: calc(var(--gutter) + 74px + 9px); width: 11px; height: 11px;
+  background: var(--band-high); transition: background-color 200ms;
+}
+.moment.is-now::before { background: var(--bone); }
+.moment-time {
+  font: 800 26px/1 var(--numeral); font-variant-numeric: tabular-nums; text-align: right; padding-top: 6px; color: var(--bone-muted);
+  transition: color 200ms;
+}
+.moment.is-now .moment-time { color: var(--bone); }
+.moment h2, .fulltime h2, .install h2 {
+  font: 800 clamp(30px, 6.4vw, 40px)/1.02 var(--numeral); text-transform: uppercase; letter-spacing: 0.01em; text-wrap: balance;
+}
+.moment-body > p { margin-top: 10px; color: var(--bone-muted); max-width: 52ch; }
+
+/* Demos: the app's real components at truthful values */
+.demo { margin-top: 18px; }
+.demo-stripe {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: var(--run); color: var(--on-run); padding: 14px 16px; max-width: 420px;
+}
+.demo-stop { display: flex; align-items: center; gap: 10px; font: 800 34px/1 var(--numeral); letter-spacing: 0.06em; text-transform: uppercase; }
+.sq { width: 18px; height: 18px; background: currentColor; display: block; }
+.demo-cap { display: flex; align-items: center; gap: 7px; font: 700 13px/1 var(--numeral); letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; display: block; }
+
+.demo-teams, .fulltime-score { display: grid; grid-template-columns: 1fr 1fr; max-width: 420px; }
+.t { display: flex; flex-direction: column; padding: 12px 14px 10px; color: #fff; }
+.t em { font: 700 14px/1 var(--numeral); letter-spacing: 0.14em; text-transform: uppercase; font-style: normal; }
+.t b { font: 800 72px/0.9 var(--numeral); font-variant-numeric: tabular-nums; margin-top: 6px; }
+.t-a { background: var(--team-a); }
+.t-b { background: var(--team-b); }
+
+.demo-timeout {
+  display: flex; justify-content: space-between; align-items: end; max-width: 420px;
+  background: var(--team-b); color: #fff; padding: 14px 16px;
+}
+.demo-timeout span { font: 700 14px/1 var(--numeral); letter-spacing: 0.14em; text-transform: uppercase; }
+.demo-timeout b { font: 800 84px/0.85 var(--numeral); font-variant-numeric: tabular-nums; }
+
+.demo-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; gap: 18px; align-items: baseline; justify-content: space-between; min-width: 132px;
+  padding: 10px 14px; background: var(--band); border: 2px solid transparent;
+  font: 800 28px/1 var(--numeral); font-variant-numeric: tabular-nums;
+}
+.chip b { color: var(--stop); font-weight: 800; }
+.chip-in { border-color: var(--stop); animation: chip-blink 600ms steps(1, end) infinite; }
+@keyframes chip-blink { 50%, 100% { background: var(--stop); color: var(--on-stop); } }
+.chip-in b { animation: chip-blink-num 600ms steps(1, end) infinite; }
+@keyframes chip-blink-num { 50%, 100% { color: var(--on-stop); } }
+.chip-in:hover, .chip-in:hover b { animation-play-state: paused; }
+
+.demo-history { display: grid; grid-template-columns: 1.3fr 1fr; max-width: 420px; background: var(--band); }
+.demo-history span { display: flex; flex-direction: column; padding: 12px 14px; font-size: 13px; color: var(--bone-muted); font-weight: 600; }
+.demo-history span + span { border-left: 1px solid var(--line); }
+.demo-history b { font: 700 18px/1.1 var(--numeral); letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone); }
+
+.phone {
+  margin-top: 22px; width: min(100%, 320px); padding: 9px; background: #000; border-radius: 42px;
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.75), 0 0 0 1px var(--line);
+}
+.phone img { border-radius: 33px; }
+
+/* Half-time: a full-bleed amber band across the spine */
+.halftime {
+  position: relative; z-index: 1; display: grid; grid-template-columns: 74px 1fr; column-gap: 28px; align-items: baseline;
+  padding: 22px var(--gutter); background: var(--stop); color: var(--on-stop);
+}
+.halftime-time { font: 800 26px/1 var(--numeral); text-align: right; font-variant-numeric: tabular-nums; }
+.halftime-text { font: 700 19px/1.35 var(--ui); max-width: 52ch; }
+.halftime-text strong { font: 800 26px/1 var(--numeral); font-variant-numeric: tabular-nums; }
+
+/* Full time */
+.fulltime { position: relative; z-index: 1; padding: 48px var(--gutter) 0; background: var(--band); border-top: 1px solid var(--line); }
+.fulltime-time { font: 800 clamp(96px, 26vw, 150px)/0.86 var(--numeral); font-variant-numeric: tabular-nums; margin-bottom: 18px; }
+.fulltime > p { margin: 10px 0 22px; color: var(--bone-muted); max-width: 52ch; }
+.fulltime-score { margin-bottom: 28px; }
+.stripe-end { margin-top: 0; }
+
+/* Install */
+.install { padding: clamp(48px, 7vw, 88px) var(--gutter); border-top: 1px solid var(--line); }
+.steps { list-style: none; padding: 0; margin-top: 24px; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 18px 0; border-top: 4px solid var(--band-high); }
+.step-n { font: 800 56px/0.85 var(--numeral); color: var(--stop); }
+.steps p { color: var(--bone-muted); max-width: 46ch; }
+.steps strong { color: var(--bone); font-weight: 700; }
+
+.footer {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+  padding: 24px var(--gutter) max(24px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line); color: var(--bone-muted); font-size: 14px;
+}
+
+@media (max-width: 359px) {
+  .stripe-word { white-space: normal; }
+}
+
+/* Half-time: the clock's label and line take the attention paint */
+.is-halftime .clock-period, .is-halftime .scrubber-period { color: var(--stop); }
+.is-halftime .clock-fill { background: var(--stop); }
+
+/* Small phones: tighter spine column */
+@media (max-width: 420px) {
+  .moment, .halftime { grid-template-columns: 58px 1fr; column-gap: 20px; }
+  .spine::before { left: calc(var(--gutter) + 58px + 9px); }
+  .moment::before { left: calc(var(--gutter) + 58px + 5px); }
+  .moment-time, .halftime-time { font-size: 22px; }
+}
+
+/* Desktop: the intro becomes the sticky clock column; the spine scrolls beside it. */
+@media (min-width: 1000px) {
+  .layout {
+    display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    max-width: 1360px; margin: 0 auto;
+  }
+  .intro {
+    position: sticky; top: 0; align-self: start; min-height: 100svh;
+    display: flex; flex-direction: column; justify-content: safe center; padding-bottom: 40px;
+  }
+  .clock-time { font-size: clamp(120px, min(15vw, 22vh), 220px); }
+  .headline { font-size: clamp(48px, 4.4vw, 68px); max-width: 17ch; }
+  .stripe { margin: 0; max-width: 600px; padding-left: 28px; }
+  .stripe-word { font-size: clamp(26px, 2.5vw, 36px); }
+  .match { margin-top: 0; border-left: 1px solid var(--line); }
+  .scrubber { display: none; }
+  .spine { padding-top: 12vh; }
+  .halftime { margin-right: calc((100vw - min(100vw, 1360px)) / -2); }
+  .fulltime { margin-right: calc((100vw - min(100vw, 1360px)) / -2); }
+  .install { max-width: 1360px; margin: 0 auto; }
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+}
+
+/* Short desktop screens (typical laptops): tighten the sticky column so it fits. */
+@media (min-width: 1000px) and (max-height: 760px) {
+  .clock { margin-bottom: 12px; }
+  .headline { font-size: clamp(40px, 3.6vw, 54px); }
+  .lede { margin: 10px 0 16px; font-size: 16px; }
+  .stripe { min-height: 80px; padding-block: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrubber { transition: none; }
+  html { scroll-behavior: auto; }
+  .chip-in { animation: none; background: var(--stop); color: var(--on-stop); }
+  .chip-in b { animation: none; color: var(--on-stop); }
+  .clock-fill { transition: none; }
+}

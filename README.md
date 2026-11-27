@@ -19,7 +19,7 @@ The landing page lives in `landing/` and deploys to Vercel on every push to
 1. Bump `version` and `android.versionCode` in `app.json`.
 2. Build the APK: `npx eas-cli@latest build -p android --profile preview`.
 3. Download the APK from the build page and attach it to a new GitHub release:
-   `gh release create v1.1.0 handball-table.apk --title "Handball Table 1.1.0"`.
+   `gh release create v1.2.0 handball-table.apk --title "Handball Table 1.2.0"`.
 4. In `landing/vercel.json`, point the `/handball-table.apk` redirect at the new
    release, and update the version and size in `landing/index.html`. Push, and
    Vercel redeploys the landing page.

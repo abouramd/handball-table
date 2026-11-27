@@ -11,3 +11,4 @@ export * from './undo';
 export * from './matchReducer';
 export * from './describe';
 export * from './history';
+export * from './timeline';

@@ -114,10 +114,11 @@ export function TeamBand({ teamId, match, gameMs, now, scale, dispatch, onAddSus
 
 const styles = StyleSheet.create({
   band: { flex: 1, paddingHorizontal: 12, paddingTop: 10, gap: 8 },
-  name: { letterSpacing: 2.4 },
-  score: { fontFamily: font.numeral, includeFontPadding: false, marginTop: -2, ...tabular },
-  scoreRow: { flexDirection: 'row', gap: 8 },
+  // Fixed parts never shrink; only the scrolling chip row gives up space on short screens.
+  name: { letterSpacing: 2.4, flexShrink: 0 },
+  score: { fontFamily: font.numeral, includeFontPadding: false, marginTop: -2, flexShrink: 0, ...tabular },
+  scoreRow: { flexDirection: 'row', gap: 8, flexShrink: 0 },
   flex: { flex: 1 },
-  chips: { flex: 1, marginHorizontal: -2 },
+  chips: { flex: 1, minHeight: 0, marginHorizontal: -2 },
   chipsContent: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, paddingHorizontal: 2, paddingBottom: 12 },
 });

@@ -328,6 +328,12 @@ Takes the stripe's place: a 64 px band with an amber "Start break" label and the
 - **Colour Picker:** eight team paints in two rows of four, 64 px tall; the selected swatch gets a 3 px bone border and a check; the other team's colour is marked "OTHER" but stays selectable.
 - **Shirt Number Pad:** full-screen wall sheet with a 96 px numeral readout in the team paint and a 4-row grid of band keys (40 px numerals), growing with the screen between 64 and 96 px; the confirm key is green.
 
+### Match Report (summary)
+Score bands in team paint, the meta band ("Full time · Half-time 3–2 · date"), then a Report | Timeline segmented strip.
+- **Timeline:** two-sided. Home events on the left, away on the right, game time on a band-coloured spine running the length of the list. A pinned header paints both teams with their names, so rows never repeat the name. Goals show the running score next to the spine, with the side that changed in bone and the other dimmed. Half-time and full time are identical full-width band-high rows; neither uses state paint.
+- **Footer:** Home key, Share key (64 px band keys), then the green "New match" stripe. Delete is a quiet full-width band at the end of the report (alert-red label, confirm dialog).
+- **Share card:** the image sent through the share sheet. A 390 pt column captured at 1080 px: score bands, meta band, timeline header and timeline, then a band footer with the "Handball Table" wordmark (amber second word). Drawn off-screen only while it is captured.
+
 ## Do's and Don'ts
 
 ### Do:

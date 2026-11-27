@@ -75,7 +75,14 @@ export default function MatchScreen() {
         redoLabel={redoLabel}
       />
 
-      <GameClock gameMs={gameMs} label={phaseLabel(match.phase)} scale={scale} onLongPress={() => setAdjustOpen(true)} />
+      {/* During the break the clock is frozen and the break countdown is the focal number,
+          so the clock steps down and the team bands keep room on short phones. */}
+      <GameClock
+        gameMs={gameMs}
+        label={phaseLabel(match.phase)}
+        scale={match.phase === 'HALF_TIME' ? scale * 0.5 : scale}
+        onLongPress={() => setAdjustOpen(true)}
+      />
 
       {match.phase === 'HALF_TIME' ? (
         <HalfTimePanel

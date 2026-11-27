@@ -49,7 +49,12 @@ The landing page lives in `landing/` and deploys to Vercel on every push to
   names what it will act on. A new action after Undo clears Redo, like in any editor.
 - **Event log** and **match summary**.
 - **Past matches**: every finished match is saved on the phone (up to 100) and
-  listed on the home screen; open any match report, or delete one or all of them.
+  listed on the home screen; open any match report, switch to its **timeline**
+  (goals with the running score, timeouts, suspensions, half-time and full time
+  in game-time order), or delete one or all of them.
+- **Share a match as an image**: the Share key on a match report opens the
+  phone's share sheet (WhatsApp, Messages, email…) with a picture of the result
+  and the full timeline.
 - The match is saved after every change: a crash, app kill or phone lock never
   loses it. On launch, the home screen offers "Resume match in progress".
 - The screen stays awake while a match is open. All alerts are vibrations (no sounds).
